@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Seriesfeed Favourites Dropdown
 // @namespace    https://www.seriesfeed.com
-// @version      1.0
+// @version      1.0.1
 // @description  Choose your favourites from a dropdown on any page, just like Bierdopje!
 // @updateURL 	 https://github.com/TomONeill/seriesfeed-favourites/raw/master/seriesfeed-favourites-dropdown.latest.user.js
 // @match        https://www.seriesfeed.com/*
@@ -62,16 +62,18 @@ $(() => {
 
 	function getStarDropdown() {
 		const topLevel = $("<li/>").addClass("top-level upper favourites-li");
-		const topLevelToggle = $("<a/>").addClass("top-level-toggle");
+		const topLevelToggle = $("<a/>").addClass("top-level-toggle").click(function() { $(this).toggleClass("open"); });
 		const starIcon = $("<i/>").addClass("fa fa-star-o");
 		topLevel.append(topLevelToggle);
 		topLevelToggle.append(starIcon);
 
 		const mainMenuDropdown = $("<ul/>").addClass("main-menu-dropdown");
 		const scrollContainer = $("<li/>").addClass("scrollContainer");
-		mainMenuDropdown.append(scrollContainer);
+		const scrollContainerUl = $("<ul/>");
 		topLevel.append(mainMenuDropdown);
+		mainMenuDropdown.append(scrollContainer);
+		scrollContainer.append(scrollContainerUl);
 
-		return { topLevel: topLevel, dropdown: scrollContainer };
+		return { topLevel: topLevel, dropdown: scrollContainerUl };
 	}
 });
