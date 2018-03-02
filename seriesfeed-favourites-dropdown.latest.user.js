@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Seriesfeed Favourites Dropdown
 // @namespace    https://www.seriesfeed.com
-// @version      1.0.1
+// @version      1.1
 // @description  Choose your favourites from a dropdown on any page, just like Bierdopje!
 // @updateURL 	 https://github.com/TomONeill/seriesfeed-favourites/raw/master/seriesfeed-favourites-dropdown.latest.user.js
 // @match        https://www.seriesfeed.com/*
@@ -16,7 +16,7 @@
 'use strict';
 
 /*
-TODO:
+Maybe in the future:
 - Cache favourites for quicker loading > add/remove to cache when adding/removing a favourite.
 - Enable keyboard input to select a favourite from the list.
 */
@@ -25,11 +25,14 @@ $(() => {
 	const _baseUrl = "https://www.seriesfeed.com";
 	const username = getUsername();
 
+	const starDropdown = getStarDropdown();
+	$('.main-menu .new-message').after(starDropdown.topLevel);
+	const loader = getLoader();
+	starDropdown.dropdown.append(loader);
+
 	ajaxGet(`${_baseUrl}/users/${username}/favourites`)
 		.then((page) => {
 		const favourites = $(page).find("#favourites tr td:nth-child(2) a");
-		const starDropdown = getStarDropdown();
-		$('.main-menu .new-message').after(starDropdown.topLevel);
 
 		favourites.each((index, favourite) => {
 			const favName = $(favourite).text();
@@ -37,27 +40,14 @@ $(() => {
 			const showItem = $("<li/>").append($("<a/>").attr("href", _baseUrl + favSlug).text(favName));
 			starDropdown.dropdown.append(showItem);
 		});
+
+		loader.remove();
 	});
 
 	function getUsername() {
 		const userLink = $('.main-menu .profile-li .main-menu-dropdown li:first-child a').attr('href');
 		const userLinkParts = userLink.split('/');
 		return userLinkParts[2];
-	}
-
-	function ajaxGet(url) {
-		return new Promise((resolve, reject) => {
-			GM_xmlhttpRequest({
-				method: "GET",
-				url: url,
-				onload: (pageData) => {
-					resolve(pageData.responseText);
-				},
-				onerror: (error) => {
-					reject(error);
-				}
-			});
-		});
 	}
 
 	function getStarDropdown() {
@@ -75,5 +65,25 @@ $(() => {
 		scrollContainer.append(scrollContainerUl);
 
 		return { topLevel: topLevel, dropdown: scrollContainerUl };
+	}
+
+	function getLoader() {
+		const spinnerIcon = $("<i/>").addClass("fa fa-spinner fa-spin");
+		return $("<h3/>").addClass("text-center").css({ marginTop: "9px" }).append(spinnerIcon);
+	}
+
+	function ajaxGet(url) {
+		return new Promise((resolve, reject) => {
+			GM_xmlhttpRequest({
+				method: "GET",
+				url: url,
+				onload: (pageData) => {
+					resolve(pageData.responseText);
+				},
+				onerror: (error) => {
+					reject(error);
+				}
+			});
+		});
 	}
 });

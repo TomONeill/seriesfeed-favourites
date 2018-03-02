@@ -3,7 +3,7 @@ Choose your favourites from a dropdown on any page, just like Bierdopje!
 <BR/>
 Enjoy.
 <BR/><BR/>
-Version <strong>1.0.1</strong>
+Version <strong>1.1</strong>
 
 <A HREF="https://github.com/TomONeill/seriesfeed-favourites/raw/master/seriesfeed-favourites.latest.user.js">INSTALL</A>
 
