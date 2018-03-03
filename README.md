@@ -7,7 +7,7 @@ Version <strong>1.2</strong>
 
 <A HREF="https://github.com/TomONeill/seriesfeed-favourites/raw/master/seriesfeed-favourites.latest.user.js">INSTALL</A>
 
-# Screenshots
+# Screenshot
 <a href="https://raw.githubusercontent.com/TomONeill/seriesfeed-favourites/master/screenshots/dropdown.png" target="_blank"><img src="https://raw.githubusercontent.com/TomONeill/seriesfeed-favourites/master/screenshots/dropdown.png" width="250px" /></a>
 
 # Changelog
