@@ -1,5 +1,8 @@
 Seriesfeed Favourites Dropdown
 
+Version 1.2 (3 March 2018)
+Finished shows are now lesser visible.
+
 Version 1.1 (2 March 2018)
 Added a loader so the star icon appears quicker.
 

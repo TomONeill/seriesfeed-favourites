@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Seriesfeed Favourites Dropdown
 // @namespace    https://www.seriesfeed.com
-// @version      1.1
+// @version      1.2
 // @description  Choose your favourites from a dropdown on any page, just like Bierdopje!
 // @updateURL 	 https://github.com/TomONeill/seriesfeed-favourites/raw/master/seriesfeed-favourites-dropdown.latest.user.js
 // @match        https://www.seriesfeed.com/*
@@ -32,12 +32,18 @@ $(() => {
 
 	ajaxGet(`${_baseUrl}/users/${username}/favourites`)
 		.then((page) => {
-		const favourites = $(page).find("#favourites tr td:nth-child(2) a");
+		const favouriteRows = $(page).find("#favourites tr:gt(0)");
 
-		favourites.each((index, favourite) => {
-			const favName = $(favourite).text();
-			const favSlug = $(favourite).attr("href");
+		favouriteRows.each((index, favouriteRow) => {
+			const favName = $(favouriteRow).find("td:nth-child(2) a").text();
+			const favSlug = $(favouriteRow).find("td:nth-child(2) a").attr("href");
+			const isFinishedShow = $(favouriteRow).find("td:nth-child(3)").text() === "Afgelopen";
 			const showItem = $("<li/>").append($("<a/>").attr("href", _baseUrl + favSlug).text(favName));
+
+			if (isFinishedShow) {
+				showItem.css({ opacity: 0.5 });
+			}
+
 			starDropdown.dropdown.append(showItem);
 		});
 
