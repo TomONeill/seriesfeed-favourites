@@ -1,18 +1,18 @@
 ﻿// ==UserScript==
 // @name         Seriesfeed Favourites Dropdown
 // @namespace    https://www.seriesfeed.com
-// @version      1.3
+// @version      1.2
 // @description  Choose your favourites from a dropdown on any page, just like Bierdopje!
 // @updateURL 	 https://github.com/TomONeill/seriesfeed-favourites/raw/master/seriesfeed-favourites-dropdown.latest.user.js
 // @match        https://www.seriesfeed.com/*
 // @grant        unsafeWindow
-// @grant        GM.xmlHttpRequest
+// @grant        GM_xmlhttpRequest
 // @require      https://code.jquery.com/jquery-3.3.1.min.js
 // @author       Tom
 // @copyright    2018+, Tom
 // ==/UserScript==
 /* jshint -W097 */
-/* global $, console, GM */
+/* global $, console, GM_xmlhttpRequest */
 'use strict';
 
 /*
@@ -80,7 +80,7 @@ $(() => {
 
 	function ajaxGet(url) {
 		return new Promise((resolve, reject) => {
-			GM.xmlHttpRequest({
+			GM_xmlhttpRequest({
 				method: "GET",
 				url: url,
 				onload: (pageData) => {

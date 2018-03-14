@@ -3,8 +3,10 @@ Choose your favourites from a dropdown on any page, just like Bierdopje!
 <BR/>
 Enjoy.
 <BR/><BR/>
-Version <strong>1.2</strong>
-
+Version <strong>1.3</strong>
+<BR/>
+<b>Note: GreaseMonkey 3 users should install 1.2!</b>
+<BR/><BR/>
 <A HREF="https://github.com/TomONeill/seriesfeed-favourites/raw/master/seriesfeed-favourites.latest.user.js">INSTALL</A>
 
 # Screenshot

@@ -1,5 +1,8 @@
 Seriesfeed Favourites Dropdown
 
+Version 1.3 (14 March 2018)
+Switched to GreaseMonkey 4's API.
+
 Version 1.2 (3 March 2018)
 Finished shows are now lesser visible.
 
