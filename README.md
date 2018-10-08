@@ -1,3 +1,6 @@
+# Thank you
+Thank you for all your support! The developers of Seriesfeed <A HREF="https://www.seriesfeed.com/forum/topic/884">chose</A> to implement and improve my feature into the main product. No need to install this script anymore!
+<BR/><BR/>
 # Seriesfeed Favourites Dropdown
 Choose your favourites from a dropdown on any page, just like Bierdopje!
 <BR/>
